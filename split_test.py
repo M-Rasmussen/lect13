@@ -69,11 +69,13 @@ class SplitTestCase(unittest.TestCase):
             }
 
         ]
+        '''
         self.exception_test_params=[
             {
                 KEY_INPUT: 12,
             }
         ]
+        '''
 
 
     def test_split_success(self):
