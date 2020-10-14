@@ -17,10 +17,11 @@ KEY_SECOND_WORD = "second_word"
 class SplitTestCase(unittest.TestCase):
     def setUp(self):
         self.success_test_params = [
+            #SplitTestOject()
             {
                 KEY_INPUT: "Childish Gambino",
                 KEY_EXPECTED: {
-                    KEY_LENGTH: 3,
+                    KEY_LENGTH: 2,
                     KEY_FIRST_WORD: "Childish",
                     KEY_SECOND_WORD: "Gambino",
                 }
@@ -30,10 +31,18 @@ class SplitTestCase(unittest.TestCase):
                 KEY_EXPECTED: {
                     KEY_LENGTH: 4,
                     KEY_FIRST_WORD: "Bone",
-                    KEY_SECOND_WORD: "Thigs",
+                    KEY_SECOND_WORD: "Thugs",
+                }
+            },
+            {
+                KEY_INPUT: "Joe Strummer",
+                KEY_EXPECTED: {
+                    KEY_LENGTH: 2,
+                    KEY_FIRST_WORD: "Joe",
+                    KEY_SECOND_WORD: "Strummer",
                 }
             }
-            # TODO add another
+
         ]
         
         self.failure_test_params = [
@@ -47,11 +56,23 @@ class SplitTestCase(unittest.TestCase):
             {
                 KEY_INPUT: "Tupac Shakur",
                 KEY_EXPECTED: {
-                    KEY_LENGTH: 2,
-                    KEY_FIRST_WORD: "Tupac",
+                    KEY_LENGTH: 20,
+                    KEY_FIRST_WORD: "biggie smalls",
+                }
+            },
+            {
+                KEY_INPUT: "Mondaona",
+                KEY_EXPECTED: {
+                    KEY_LENGTH: 3,
+                    KEY_FIRST_WORD: "Mondona",
                 }
             }
-            # TODO add another
+
+        ]
+        self.exception_test_params=[
+            {
+                KEY_INPUT: 12,
+            }
         ]
 
 
@@ -71,7 +92,10 @@ class SplitTestCase(unittest.TestCase):
             
             self.assertNotEqual(len(inp), expected[KEY_LENGTH])
             self.assertNotEqual(inp[0], expected[KEY_FIRST_WORD])
-
-
+'''
+    def test_split_exception(self):
+        for test in self.exception_test_params:
+            self.assertRaise(test[KEY_INPUT].split())
+'''
 if __name__ == '__main__':
     unittest.main()
